@@ -73,32 +73,35 @@ class BookBoard {
     displayPagination(data) {
         const pagination = document.getElementById('pagination');
         pagination.innerHTML = '';
-
+    
         const totalPages = Math.ceil(data.count / 10);
-
-        // 이전 페이지
+    
+        // 이전 페이지 버튼
         if (this.currentPage > 1) {
             pagination.innerHTML += `
-                <button onclick="bookBoard.changePage(${this.currentPage - 1})">
+                <button onclick="bookBoard.changePage(${this.currentPage - 1})"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                     이전
                 </button>
             `;
         }
-
-        // 페이지 번호
+    
+        // 페이지 번호 버튼
         for (let i = 1; i <= totalPages; i++) {
             pagination.innerHTML += `
                 <button onclick="bookBoard.changePage(${i})"
-                        ${i === this.currentPage ? 'disabled' : ''}>
+                        class="px-4 py-2 mx-1 rounded-lg transition duration-300
+                               ${i === this.currentPage ? 'bg-blue-700 text-white cursor-not-allowed' : 'bg-white bg-opacity-20 text-white hover:bg-blue-500'}">
                     ${i}
                 </button>
             `;
         }
-
-        // 다음 페이지
+    
+        // 다음 페이지 버튼
         if (this.currentPage < totalPages) {
             pagination.innerHTML += `
-                <button onclick="bookBoard.changePage(${this.currentPage + 1})">
+                <button onclick="bookBoard.changePage(${this.currentPage + 1})"
+                        class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition duration-300">
                     다음
                 </button>
             `;

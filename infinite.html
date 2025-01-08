@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>도서관리 시스템 - 무한스크롤</title>
+</head>
+<body>
+    <h1>도서관리 시스템</h1>
+
+    <!-- 검색 및 필터 -->
+    <div>
+        <select id="categoryFilter">
+            <option value="">모든 카테고리</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="도서명 또는 저자 검색">
+        <button id="searchButton">검색</button>
+        <select id="sortSelect">
+            <option value="title">제목순</option>
+            <option value="-publication_date">최신순</option>
+            <option value="price">가격순</option>
+        </select>
+    </div>
+
+    <!-- 도서 목록 -->
+    <div id="booksGrid"></div>
+
+    <!-- 로딩 표시 -->
+    <div id="loading" style="display: none;">로딩 중...</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="js/infinite.js"></script>
+</body>
+</html>

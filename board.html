@@ -3,43 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>도서관리 시스템 - 게시판형</title>
+    <title>도서관리 시스템 - 하와이 휴양지 스타일</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* 하와이 느낌을 위한 커스텀 스타일 */
+        .hawaii-bg {
+            background-image: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1953&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+    </style>
 </head>
-<body>
-    <h1>도서관리 시스템</h1>
+<body class="hawaii-bg min-h-screen p-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- 제목 -->
+        <h1 class="text-4xl font-bold text-center text-white mb-8">🌺 도서관리 시스템 🌺</h1>
 
-    <!-- 검색 및 필터 -->
-    <div>
-        <select id="categoryFilter">
-            <option value="">모든 카테고리</option>
-        </select>
-        <input type="text" id="searchInput" placeholder="도서명 또는 저자 검색">
-        <button id="searchButton">검색</button>
-        <select id="sortSelect">
-            <option value="title">제목순</option>
-            <option value="-publication_date">최신순</option>
-            <option value="price">가격순</option>
-        </select>
-    </div>
+        <!-- 검색 및 필터 -->
+        <div class="glassmorphism p-6 mb-8">
+            <div class="flex flex-wrap gap-4">
+                <select id="categoryFilter" class="p-2 border border-white rounded bg-transparent text-white">
+                    <option value="" class="text-gray-800">모든 카테고리</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="도서명 또는 저자 검색" class="p-2 border border-white rounded bg-transparent text-white placeholder-white flex-grow">
+                <button id="searchButton" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">검색</button>
+                <select id="sortSelect" class="p-2 border border-white rounded bg-transparent text-white">
+                    <option value="title" class="text-gray-800">제목순</option>
+                    <option value="-publication_date" class="text-gray-800">최신순</option>
+                    <option value="price" class="text-gray-800">가격순</option>
+                </select>
+            </div>
+        </div>
 
-    <!-- 도서 목록 -->
-    <table>
-        <thead>
-            <tr>
-                <th>제목</th>
-                <th>저자</th>
-                <th>카테고리</th>
-                <th>출판일</th>
-                <th>가격</th>
-                <th>재고</th>
-            </tr>
-        </thead>
-        <tbody id="booksList">
-        </tbody>
-    </table>
+        <!-- 도서 목록 -->
+        <div class="glassmorphism p-6">
+            <table class="w-full">
+                <thead class="bg-white bg-opacity-20">
+                    <tr>
+                        <th class="p-3 text-left text-white">제목</th>
+                        <th class="p-3 text-left text-white">저자</th>
+                        <th class="p-3 text-left text-white">카테고리</th>
+                        <th class="p-3 text-left text-white">출판일</th>
+                        <th class="p-3 text-left text-white">가격</th>
+                        <th class="p-3 text-left text-white">재고</th>
+                    </tr>
+                </thead>
+                <tbody id="booksList" class="divide-y divide-white divide-opacity-20">
+                    <!-- 도서 목록이 여기에 동적으로 추가됩니다 -->
+                </tbody>
+            </table>
+        </div>
 
-    <!-- 페이지네이션 -->
-    <div id="pagination">
+        <!-- 페이지네이션 -->
+        <div id="pagination" class="flex justify-center mt-8">
+            <!-- 페이지네이션 버튼이 여기에 동적으로 추가됩니다 -->
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
